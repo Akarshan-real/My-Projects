@@ -1,4 +1,5 @@
 .navbar-todos-divs span{
+    word-break: break-word;
     position : relative;
 }
 .navbar-todos-divs span::before {
@@ -8,7 +9,7 @@
     width : 5px;
     background : transparent;
     top : 50%;
-    left : -1rem;
+    left : -14px;
     transform: translateY(-50%);
     border-radius : 50%;
     border: 0.2px solid white ;

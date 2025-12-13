@@ -17,7 +17,8 @@
 }
 .holder {
     position: relative;
-    width: fit-content;
+    width: 100%;
+    max-width: 500px;
     transition: color 150ms ease-in-out;
     margin-block: 8px;
     border-radius: 1rem;
@@ -115,7 +116,8 @@
     padding-inline: 2rem;
     border-radius: 1rem;
     transition: transform 150ms ease-in-out,
-                background-color 150ms ease-in-out;
+                background-color 150ms ease-in-out,
+                opacity 250ms ease-in-out;
 }
 .labelButton:hover {
     background-color: var(--navbar-bg-hover);
@@ -143,5 +145,11 @@
     100% {
         opacity: 0;
         top: -20%;
+    }
+}
+@media (max-width : 720px) {
+    #root > div > div > div.flex.items-center.gap-5.w-full {
+        flex-direction: column;
+        align-items: flex-start;
     }
 }

@@ -13,8 +13,8 @@ const Navbar = ({ todos }) => {
           <span className='w-fit h-fit cursor-context-menu font-bold'>iTask</span>
         </div>
         <ul className='flex justify-center items-center gap-10 h-full'>
-          <li className={`lis cursor-pointer relative h-fit ${show ? "active scale-[1.15]" : "deactive"}`} onClick={() => setShow(false)}>Home</li>
-          <li className={`lis cursor-pointer relative h-fit ${show ? "deactive" : "active"}`} onClick={() => setShow(true)}>Your Tasks</li>
+          <li className={`lis cursor-pointer relative h-fit whitespace-nowrap ${show ? "active scale-[1.15]" : "deactive"}`} onClick={() => setShow(false)}>Home</li>
+          <li className={`lis cursor-pointer relative h-fit whitespace-nowrap ${show ? "deactive" : "active"}`} onClick={() => setShow(true)}>Your Tasks</li>
         </ul>
       </div>
 

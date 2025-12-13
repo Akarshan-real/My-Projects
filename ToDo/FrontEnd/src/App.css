@@ -9,7 +9,8 @@
     height: 100%;
     cursor: pointer;
     transition: background-color 150ms ease-in-out,
-                transform 150ms ease-in-out;
+                transform 150ms ease-in-out,
+                opacity 300ms ease-in-out;
     white-space: nowrap;
 }
 
@@ -57,4 +58,19 @@
 }
 .reverse {
     animation-direction: reverse;
+}
+
+@media (max-width : 720px) {
+    #root > div > div > div.flex.items-center.gap-5.w-fit {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    #root > div > div > div.h-12.flex.items-center.gap-8.relative {
+        height: 40px;
+    }
+    .selectButton,.operationButtons {
+        font-size: 14px;
+        padding-inline: 1rem;
+        font-weight: 600;
+    }
 }

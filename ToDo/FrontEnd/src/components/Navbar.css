@@ -65,3 +65,8 @@ li:hover::after {
 .homeGrow {
     transform: scale(1.15);
 }
+@media (max-width : 480px) {
+    #root > div > nav > div.nav-first-div.flex.justify-between.items-center.h-full.z-50.w-full.px-4 > ul {
+        gap: 10px;
+    }
+}

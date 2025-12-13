@@ -33,7 +33,7 @@ const Todo = ({ info, show, onCheckChange, index, isEditing, setEditValue, isSel
     return (
         <div className='outerTodo' onClick={(e) => e.stopPropagation()}>
             <span
-                className={`todoInfoBox ${isSelected ? "checked" : "unchecked"} flex-1 block relative`}
+                className={`todoInfoBox max-w-[80%] ${isSelected ? "checked" : "unchecked"} block relative w-full`}
             >
 
                 <form
@@ -59,7 +59,7 @@ const Todo = ({ info, show, onCheckChange, index, isEditing, setEditValue, isSel
                     />
                 </form>
 
-                <span className={`${isEditing && lockedIndex === index ? "opacity-0 pointer-events-none" : "opacity-100 "}`}>
+                <span className={`block w-full wrap-break-word ${isEditing && lockedIndex === index ? "opacity-0 pointer-events-none" : "opacity-100 "}`}>
                     {info}
                 </span>
             </span>

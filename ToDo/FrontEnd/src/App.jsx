@@ -169,7 +169,7 @@ function App() {
             }`}>
             <button
               type="button"
-              className="selectButton flex justify-center items-center"
+              className={`selectButton flex justify-center items-center ${data.length > 0 ? "" : "opacity-50 pointer-events-none"}`}
               onClick={data.length > 0 ? handleSelectClick : null}
               disabled={data.length === 0}>
               Select
@@ -204,7 +204,7 @@ function App() {
         </div>
 
         {/* TODO CONTAINER */}
-        <div className='flex flex-col gap-3'>
+        <div className='flex flex-col gap-6'>
           {data.map((element, index) => (
             <Todo
               key={index} // mandatory key value

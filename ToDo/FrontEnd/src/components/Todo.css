@@ -4,8 +4,19 @@
     align-items: flex-start;
     width: 100%;
     height: fit-content; 
+    position: relative;
 }
-
+.outerTodo::after {
+    position: absolute;
+    content: '';
+    background-color: rgb(193, 193, 193);
+    border-radius: 2rem;
+    width: 100%;
+    height: 0.5px;
+}
+.outerTodo::after {
+    bottom: -5px;
+}
 .todoCheckBoxContainer {
     display: flex;
     justify-content: center;
@@ -55,6 +66,12 @@
 .todoInfoBox {
     position: relative !important;
     transition: font-size 300ms ease-in-out;
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+.todoInfoBox span {
+    padding-left: 5px;
 }
 .todoInfoBox.checked {
     font-size: 1.8rem;
@@ -67,4 +84,13 @@
 #editingTextInput:active {
     outline: none !important;
     border: none !important;
+}
+
+@media (max-width : 720px) {
+    .todoInfoBox.unchecked {
+        font-size: 1rem;
+    }
+    .todoInfoBox.checked {
+        font-size: 1.3rem;
+    }
 }

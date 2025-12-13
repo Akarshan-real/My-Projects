@@ -19,7 +19,7 @@ const Label = ({ onAdd }) => {
     }
 
     return (
-        <div className='flex items-center gap-5 w-fit'>
+        <div className='flex items-center gap-5 w-full'>
             {showPopup && <div className='popUp mid'>Data Added</div>}
             <form onSubmit={handelAdd} className={`holder mid ${val.length > 0 ? 'locked' : ''}`} id='inputHolder'>
                 <input className='' autoComplete='off'
@@ -27,7 +27,7 @@ const Label = ({ onAdd }) => {
                 <label className='cool'
                     htmlFor="todoA">Enter What To Do 😎</label>
             </form>
-            <button disabled={val.trim() == ''} type='submit' className='mid labelButton' form='inputHolder'><span className='mid labelSpan'>Add</span></button>
+            <button disabled={val.trim() === ''} type='submit' className={`mid labelButton ${val.trim() ? "opacity-100" : "opacity-50 pointer-events-none"}`} form='inputHolder'><span className='mid labelSpan'>Add</span></button>
         </div>
     )
 }
