@@ -1,0 +1,22 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat", sans-serif;
+  }
+}
+
+.mid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+:root {
+  --content-bg : #fccee8;
+  --content-bg-hover : #febde3;
+  --navbar-bg : #314158 ;
+  --navbar-bg-hover : #3c4f69 ;
+}

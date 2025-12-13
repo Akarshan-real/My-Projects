@@ -1,0 +1,147 @@
+.popUp {
+    position: absolute;
+    width: fit-content;
+    height: fit-content;
+    padding: 0.8rem 1.5rem;
+    pointer-events: none;
+    background: linear-gradient(202deg,rgba(4, 219, 62, 1) 0%, rgba(2, 205, 232, 1) 100%);
+    border-radius: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: x-large;
+    border: 1px solid black;
+    color: white;
+    font-weight: 800;
+    animation: popup 2s ease-in-out alternate ;
+    z-index: 9999;
+}
+.holder {
+    position: relative;
+    width: fit-content;
+    transition: color 150ms ease-in-out;
+    margin-block: 8px;
+    border-radius: 1rem;
+    padding-block: 5px;
+    padding-inline: 10px;
+    border: 1px solid gray;
+    transition: border 250ms ease-in-out,
+                background-color 150ms ease-in-out;
+}
+.holder:hover {
+    background-color: var(--content-bg-hover);
+}
+.holder:focus-within,
+.holder.locked {
+    background-color: var(--content-bg-hover);
+    border-color: transparent;
+}
+.holder::after,.holder::before {
+    pointer-events: none;
+    position: absolute;
+    content: '';
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: transparent;
+    border-style: solid;
+    border-color: black;
+    z-index: 10;
+}
+
+.holder::before {
+    width: 0;
+    height: 100%;
+    border-block-width: 2px;
+    transition: width 250ms ease-in-out,
+                border-radius 50ms ease-in-out;
+}
+.holder:focus-within::before,
+.holder.locked::before {
+    width: 100%;
+    border-radius: 1rem;
+}
+.holder::after {
+    height: 0;
+    width: 100%;
+    border-inline-width: 2px;
+    transition: height 250ms ease-in-out,
+                border-radius 50ms ease-in-out;;
+}
+.holder:focus-within::after,
+.holder.locked::after {
+    height: 100%;
+    border-radius: 1rem;
+}
+#todoA {
+    width: 400px;
+    height: 40px;
+    cursor: pointer;
+    padding-inline: 5px;
+    transition: color 150ms ease-in-out;
+}
+#todoA:focus,
+#todoA:focus-visible,
+#todoA:active {
+    outline: none !important;
+    border: none !important;
+}
+
+.cool {
+    padding-inline: 1%;
+    z-index: 30;
+    width: fit-content;
+    height: fit-content;
+    pointer-events: none;
+    font-size: 12px;
+    position: absolute;
+    left: 10%;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all 250ms ease-in-out;
+}
+.holder:focus-within .cool,
+.holder.locked .cool {
+    font-size: 10px;
+    left: 5%;
+    top: 0;
+    background: linear-gradient(0deg,rgba(254, 189, 227, 1) 0%, rgba(252, 206, 232, 1) 100%);
+}
+.labelButton {
+    padding-block: 5px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: var(--navbar-bg);
+    padding-inline: 2rem;
+    border-radius: 1rem;
+    transition: transform 150ms ease-in-out,
+                background-color 150ms ease-in-out;
+}
+.labelButton:hover {
+    background-color: var(--navbar-bg-hover);
+}
+.labelButton:active {
+    transform: scale(0.85);
+}
+.labelSpan {
+    height: 40px;
+}
+
+@keyframes popup {
+    0% {
+        opacity: 1;
+        top: -20%;
+    }
+    25% {
+        opacity: 100;
+        top: 5%;
+    }
+    75%{
+        opacity: 100;
+        top: 5%;
+    }
+    100% {
+        opacity: 0;
+        top: -20%;
+    }
+}

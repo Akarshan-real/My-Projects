@@ -1,0 +1,60 @@
+/* .mid -> flex , justify-center items-center */
+.selectButton,
+.operationButtons {
+    border-radius: 1rem;
+    background-color: var(--navbar-bg);
+    font-weight: 600;
+    color: white;
+    padding-inline: 2rem;
+    height: 100%;
+    cursor: pointer;
+    transition: background-color 150ms ease-in-out,
+                transform 150ms ease-in-out;
+    white-space: nowrap;
+}
+
+.selectButton:hover,
+.operationButtons:hover {
+    background-color: var(--navbar-bg-hover);
+}
+
+.selectButton:active,
+.operationButtons:active {
+    transform: scale(0.85);
+}
+.slideIn{
+    animation: slideIn 1s ease-in-out forwards;
+}
+.slideOut {
+    animation: slideOut 1s ease-in-out forwards;
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateX(-150%);
+    }
+    75%{
+        transform: translateX(15%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOut {
+    0% {
+        transform: translateX(0);
+    }
+    75%{
+        transform: translateX(15%);
+    }
+    100% {
+        transform: translateX(-150%);
+    }
+}
+.normal {
+    animation-direction: normal;
+}
+.reverse {
+    animation-direction: reverse;
+}

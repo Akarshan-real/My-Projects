@@ -1,0 +1,15 @@
+.navbar-todos-divs span{
+    position : relative;
+}
+.navbar-todos-divs span::before {
+    position : absolute;
+    content : "";
+    height : 5px;
+    width : 5px;
+    background : transparent;
+    top : 50%;
+    left : -1rem;
+    transform: translateY(-50%);
+    border-radius : 50%;
+    border: 0.2px solid white ;
+}

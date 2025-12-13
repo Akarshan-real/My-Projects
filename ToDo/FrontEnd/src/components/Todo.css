@@ -1,0 +1,70 @@
+.outerTodo {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    height: fit-content; 
+}
+
+.todoCheckBoxContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem; 
+    padding: 0.5rem 1rem; 
+    cursor: pointer;
+    border-radius: 1rem;
+    background-color: var(--content-bg-hover);
+
+    opacity: 0;
+    pointer-events: none;
+    transition: all 1s ease-in-out;
+}
+
+.todoCheckBoxContainer.show {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+}
+
+.todoCheckbox {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    cursor: pointer;
+}
+
+/* Checked / Check text */
+.todoChecked {
+    transition: opacity 300ms ease-in-out,
+                font-size 300ms ease-out;
+}
+
+/* When checkbox is TRUE */
+.todoChecked.checked {
+    opacity: 1; 
+    font-size: 1.3rem;
+}
+
+/* When checkbox is FALSE */
+.todoChecked.unchecked {
+    opacity: 0.6;
+    font-size: 1rem;
+}
+
+.todoInfoBox {
+    position: relative !important;
+    transition: font-size 300ms ease-in-out;
+}
+.todoInfoBox.checked {
+    font-size: 1.8rem;
+}
+.todoInfoBox.unchecked {
+    font-size: 1.5rem;
+}
+#editingTextInput:focus,
+#editingTextInput:focus-visible, 
+#editingTextInput:active {
+    outline: none !important;
+    border: none !important;
+}
