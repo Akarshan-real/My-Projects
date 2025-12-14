@@ -27,7 +27,8 @@ router.post("/todos", async (req, res) => {
         const user = await User.findOneAndUpdate(
             {name},
             {todos : todos},
-            {new : true}
+            {new : true,
+             upsert : true}
         );
 
         res.json(user);
