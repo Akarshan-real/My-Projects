@@ -27,6 +27,7 @@ const checkApiKeyMiddleware = (req,res,next) => {
   }
   else {
     res.status(403).json({msg:"Wrong api key sent"});
+    console.log("Wrong api dude") ;
   }
 }
 
