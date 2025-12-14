@@ -20,6 +20,9 @@ app.get('/', (req,res)=>{
 });
 
 const checkApiKeyMiddleware = (req,res,next) => {
+  if (req.method === 'OPTIONS') {
+    return next();  
+  }
   const incomingApiKey =req.headers['frontend-api'];
   const ourApiKey = process.env.API;
   if (incomingApiKey === ourApiKey) {
