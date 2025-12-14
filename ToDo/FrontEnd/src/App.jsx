@@ -32,7 +32,11 @@ function App() {
   useEffect(() => {
     (async function () {
       try {
-        const response = await fetch(`${API}/api/todos/${userName}`,{"content-type" : "application/json" , "frontend-api" : import.meta.env.VITE_API_KEY});
+        const response = await fetch(`${API}/api/todos/${userName}`,{
+          headers:{
+            "content-type" : "application/json" , 
+            "frontend-api" : import.meta.env.VITE_API_KEY
+          }});
         if (response.ok) {
           const user = await response.json();
           setData(user.todos || []);
