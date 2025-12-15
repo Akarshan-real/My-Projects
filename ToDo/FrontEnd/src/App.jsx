@@ -1,24 +1,19 @@
 // App.jsx
 import { useState, useEffect, useRef } from 'react'
 import viteLogo from '/vite.svg'
+import LogIn from './components/LogIn'
 import Navbar from './components/Navbar'
 import Todo from './components/Todo'
 import Label from './components/Label'
 import './App.css'
 
 const API = import.meta.env.VITE_API_URL;
-let userName = localStorage.getItem("userName");
-if (!userName) {
-  userName = prompt(`Enter you name , please!`)
-  while (!userName || userName.trim() === '') {
-    userName = prompt("Enter a valid name which is not blank");
-  };
-  userName = userName.trim().toLowerCase();
-  localStorage.setItem("userName", userName.trim());
-}
+
 
 function App() {
 
+  const [logInStatus, setLogInStatus] = useState(!!localStorage.getItem("userName")); // to take username from the user instead of prompt
+  const [logInName, setLogInName] = useState(localStorage.getItem("userName") || ''); // to get the log-in name from user
   const [select, setSelect] = useState(false); // to see if the todos should be selected or not
   const [notRefreshedPage, setNotRefreshedPage] = useState(true); // to check if page is refreshed or not
   const [data, setData] = useState([]); // to store todos in an array
@@ -29,14 +24,25 @@ function App() {
 
   // ----------------------------------------------------------------------------------------------
 
+  const nameEntry = (name) => {
+    const newName = name.trim().toLowerCase();
+    setLogInName(newName);
+    localStorage.setItem("userName" , newName);
+  };
+
   useEffect(() => {
+    if (!logInName) {
+      return;
+    }
+
     (async function () {
       try {
-        const response = await fetch(`${API}/api/todos/${userName}`,{
-          headers:{
-            "content-type" : "application/json" , 
-            "frontend-api" : import.meta.env.VITE_API_KEY
-          }});
+        const response = await fetch(`${API}/api/todos/${logInName}`, {
+          headers: {
+            "content-type": "application/json",
+            "frontend-api": import.meta.env.VITE_API_KEY
+          }
+        });
         if (response.ok) {
           const user = await response.json();
           setData(user.todos || []);
@@ -49,14 +55,14 @@ function App() {
         console.log(`Error is ${error}`);
       }
     })();
-  }, []);
+  }, [logInName]);
 
   async function saveTodosForBackend(updatedTodosArray) {
     try {
       await fetch(`${API}/api/todos`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" , 'frontend-api' : import.meta.env.VITE_API_KEY},
-        body: JSON.stringify({ name: userName, todos: updatedTodosArray })
+        headers: { "Content-Type": "application/json", 'frontend-api': import.meta.env.VITE_API_KEY },
+        body: JSON.stringify({ name: logInName, todos: updatedTodosArray })
       })
     }
     catch (error) {
@@ -148,6 +154,9 @@ function App() {
 
   return (
     <div className='mx-auto flex flex-col items-center overflow-x-hidden gap-4 bg-(--navbar-bg) h-screen'>
+
+      {/* LOG IN WITH USERNAME */}
+      {!logInStatus && < LogIn logInChanger={setLogInStatus}  nameCheck={nameEntry} />}
 
       {/* NAVBAR */}
       <Navbar todos={data} />
