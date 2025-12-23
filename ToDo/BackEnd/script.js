@@ -9,32 +9,42 @@ config();
 
 const app = express();
 
-app.use(cors());
-app.set('view engine','ejs');
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "https://www.shini.xyz",
+    "https://landing-1-git-main-akarshans-projects-37ce71d8.vercel.app",
+    "https://landing-1-c9ra2j23n-akarshans-projects-37ce71d8.vercel.app"
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
+
+app.set('view engine', 'ejs');
 app.use(express.json());
 
 const port = process.env.PORT || 3000;
 
-app.get('/', (req,res)=>{
+app.get('/', (req, res) => {
   res.render('index');
 });
 
-const checkApiKeyMiddleware = (req,res,next) => {
+const checkApiKeyMiddleware = (req, res, next) => {
   if (req.method === 'OPTIONS') {
-    return next();  
+    return next();
   }
-  const incomingApiKey =req.headers['frontend-api'];
+  const incomingApiKey = req.headers['frontend-api'];
   const ourApiKey = process.env.API;
   if (incomingApiKey === ourApiKey) {
     next();
   }
   else {
-    res.status(403).json({msg:"Wrong api key sent"});
-    console.log("Wrong api dude") ;
+    res.status(403).json({ msg: "Wrong api key sent" });
+    console.log("Wrong api dude");
   }
 }
 
-app.use("/api", checkApiKeyMiddleware ,  router);
+app.use("/api", checkApiKeyMiddleware, router);
 
 (async function startServer() {
   try {
@@ -42,11 +52,11 @@ app.use("/api", checkApiKeyMiddleware ,  router);
     console.log(`db connected by mongoose with atlas`);
 
     app.listen(port, () => {
-      console.log(`port running`," ", port);
+      console.log(`port running`, " ", port);
     });
   }
   catch (error) {
-    console.log('Database failed to connect'," ", error.message);
+    console.log('Database failed to connect', " ", error.message);
     process.exit(1);
   }
 })();
