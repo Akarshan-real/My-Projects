@@ -14,6 +14,7 @@ const LogIn = ({ logInChanger, nameCheck }) => {
     
     return (
         <div className='w-screen h-screen mid flex-col gap-4 bg-[#000000] z-9998 absolute'>
+            <h1 className='text-white text-8xl'>iTask</h1>
             <div className='w-fit h-fit'>
                 <form id='userNameTaker'
                     onSubmit={(e) => {
