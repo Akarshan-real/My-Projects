@@ -87,12 +87,12 @@ function App() {
   const handelCheckChange = (idx) => {
     setSelectedIndexes(prev => {
       if (prev.includes(idx)) {
-        const data = prev.filter(i => i !== idx);
-        return data;
+        const updatedIndexes = prev.filter(i => i !== idx);
+        return updatedIndexes;
       }
       else {
-        const data = [...prev, idx]
-        return data;
+        const updatedIndexes = [...prev, idx]
+        return updatedIndexes;
       }
     });
   };

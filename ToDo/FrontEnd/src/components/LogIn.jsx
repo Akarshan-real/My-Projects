@@ -1,5 +1,5 @@
 // logger.jsx
-import React, { useState, useRef , useEffect } from 'react'
+import React, { useState, useRef } from 'react'
 import './LogIn.css'
 
 const LogIn = ({ logInChanger, nameCheck }) => {
@@ -7,10 +7,6 @@ const LogIn = ({ logInChanger, nameCheck }) => {
     const [done, setDone] = useState(false);
     const [val, setVal] = useState('');
     const loggerRef = useRef();
-
-    // useEffect(() => {
-    //     loggerRef.current?.focus();
-    // }, [])
     
     return (
         <div className='w-screen h-screen mid flex-col gap-4 bg-[#000000] z-9998 absolute'>
