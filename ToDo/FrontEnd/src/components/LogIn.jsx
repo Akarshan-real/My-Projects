@@ -14,7 +14,7 @@ const LogIn = ({ logInChanger, nameCheck }) => {
     
     return (
         <div className='w-screen h-screen mid flex-col gap-4 bg-[#000000] z-9998 absolute'>
-            <h1 className={`transition-colors duration-200 ease-in-out ${val.length > 0 ? "text-white" : "text-gray-400"} text-8xl tracking-wide`}>iTask</h1>
+            <h1 className={`transition-colors duration-200 ease-in-out ${val.length > 0 ? "text-white" : "text-[#808080]"} text-8xl tracking-wide`}>iTask</h1>
             <div className='w-fit h-fit'>
                 <form id='userNameTaker'
                     onSubmit={(e) => {
