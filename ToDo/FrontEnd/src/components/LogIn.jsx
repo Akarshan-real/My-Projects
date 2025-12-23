@@ -8,9 +8,9 @@ const LogIn = ({ logInChanger, nameCheck }) => {
     const [val, setVal] = useState('');
     const loggerRef = useRef();
 
-    useEffect(() => {
-        loggerRef.current?.focus();
-    }, [])
+    // useEffect(() => {
+    //     loggerRef.current?.focus();
+    // }, [])
     
     return (
         <div className='w-screen h-screen mid flex-col gap-4 bg-[#000000] z-9998 absolute'>
@@ -28,6 +28,7 @@ const LogIn = ({ logInChanger, nameCheck }) => {
                     }} className={`w-fit h-fit loggerForm ${val.length > 0 ? "lockedAf" : ""}`}>
                     <div className='w-fit h-fit relative'>
                         <input type="text" value={val} id='logger' ref={loggerRef}
+                        autoComplete='off'
                             className={`text-white`}
                             onChange={(e) => {
                                 setVal(e.target.value);
