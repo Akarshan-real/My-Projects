@@ -25,7 +25,6 @@ const LogIn = ({ logInChanger, nameCheck }) => {
                         }
                         nameCheck(val);
                         logInChanger(true);
-                        setVal('');
                     }} className={`w-fit h-fit loggerForm ${val.length > 0 ? "lockedAf" : ""}`}>
                     <div className='w-fit h-fit relative'>
                         <input type="text" value={val} id='logger' ref={loggerRef}
