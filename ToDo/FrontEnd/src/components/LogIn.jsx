@@ -1,4 +1,5 @@
-import React, { useState, useRef } from 'react'
+// logger.jsx
+import React, { useState, useRef , useEffect } from 'react'
 import './LogIn.css'
 
 const LogIn = ({ logInChanger, nameCheck }) => {
