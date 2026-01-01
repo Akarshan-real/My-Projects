@@ -15,7 +15,7 @@ const API = {
 function App() {
 
   const [logInStatus, setLogInStatus] = useState(!!localStorage.getItem("userName")); // to take username from the user instead of prompt
-  const [logInName, setLogInName] = useState(localStorage.getItem("userName") || ''); // to get the log-in name from user
+  const [logInName, setLogInName] = useState(localStorage.getItem("userName")); // to get the log-in name from user
   const [select, setSelect] = useState(false); // to see if the todos should be selected or not
   const [hasClickedOnce, setHasClickedOnce] = useState(true); // to check if select is once or not but in inverse
   const [data, setData] = useState([]); // to store todos in an array
