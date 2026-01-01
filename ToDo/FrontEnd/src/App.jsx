@@ -7,8 +7,10 @@ import Todo from './components/Todo'
 import Label from './components/Label'
 import './App.css'
 
-const API = import.meta.env.VITE_API_URL;
-
+const API = {
+  URL : import.meta.env.VITE_API_URL,
+  KEY : import.meta.env.VITE_API_KEY
+};
 
 function App() {
 
@@ -18,7 +20,7 @@ function App() {
   const [hasClickedOnce, setHasClickedOnce] = useState(true); // to check if select is once or not but in inverse
   const [data, setData] = useState([]); // to store todos in an array
   const [selectedIndexes, setSelectedIndexes] = useState([]); // to set the indexes of the todos selected at the moment
-  const [editValue, setEditValue] = useState(""); // to set the new value to the only todo selected 
+  const [editValue, setEditValue] = useState(""); // to set the new value to the only todo selected
   const [lockedIndex, setLockedIndex] = useState(null); // stores the index the editing is happening on
   const [editing, setEditing] = useState(false); // to enable or disable the state of a todo being edited
 
@@ -37,10 +39,10 @@ function App() {
 
     (async function () {
       try {
-        const response = await fetch(`${API}/api/todos/${logInName}`, {
+        const response = await fetch(`${API.URL}/api/todos/${logInName}`, {
           headers: {
             "content-type": "application/json",
-            "frontend-api": import.meta.env.VITE_API_KEY
+            "frontend-api": API.KEY
           }
         });
         if (response.ok) {
@@ -59,9 +61,9 @@ function App() {
 
   async function saveTodosForBackend(updatedTodosArray) {
     try {
-      await fetch(`${API}/api/todos`, {
+      await fetch(`${API.URL}/api/todos`, {
         method: "POST",
-        headers: { "Content-Type": "application/json", 'frontend-api': import.meta.env.VITE_API_KEY },
+        headers: { "Content-Type": "application/json", 'frontend-api': API.KEY },
         body: JSON.stringify({ name: logInName, todos: updatedTodosArray })
       })
     }
