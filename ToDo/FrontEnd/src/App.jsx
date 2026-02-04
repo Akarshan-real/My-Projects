@@ -1,11 +1,12 @@
 // App.jsx
-import { useState, useEffect, useRef } from 'react'
-import viteLogo from '/vite.svg'
-import LogIn from './components/LogIn'
-import Navbar from './components/Navbar'
-import Todo from './components/Todo'
-import Label from './components/Label'
-import './App.css'
+import { useState, useEffect, useRef } from 'react';
+import { Response_ } from '../helper/response';
+import axiosInstance from '../src/api/axiosInstance';
+import LogIn from './components/LogIn';
+import Navbar from './components/Navbar';
+import Todo from './components/Todo';
+import Label from './components/Label';
+import './App.css';
 
 const API = import.meta.env.VITE_API_URL;
 
@@ -32,27 +33,30 @@ function App() {
 
   useEffect(() => {
     if (!logInName) {
-      return;
-    }
+      return Response_(false,"Log in name not valid",400);
+    };
 
     (async function () {
       try {
-        const response = await fetch(`${API}/api/todos/${logInName}`, {
-          headers: {
-            "content-type": "application/json",
-            "frontend-api": import.meta.env.VITE_API_KEY
-          }
-        });
+        // const response = await fetch(`${API}/api/todos/${logInName}`, {
+        //   headers: {
+        //     "content-type": "application/json",
+        //     "frontend-api": import.meta.env.VITE_API_KEY
+        //   }
+        // });
+        const response = await axiosInstance.get(`/todos/${logInName}`);
+
         if (response.ok) {
           const user = await response.json();
-          setData(user.todos || []);
+          setData(user.todos);
         }
         else {
-          throw new Error("Backend problem");
+          return Response_(false,"Failed to get todos",500);
         }
       }
       catch (error) {
         console.log(`Error is ${error}`);
+        return Response_(false , "Failed to get todos",500);
       }
     })();
   }, [logInName]);
@@ -67,6 +71,7 @@ function App() {
     }
     catch (error) {
       console.error(`Error happened : ${error}`);
+      return Response_(false,"Failed to send todos",400);
     }
   };
 
