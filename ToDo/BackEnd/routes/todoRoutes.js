@@ -28,7 +28,7 @@ router.post("/todos", async (req, res) => {
             {name},
             {todos : todos},
             {new : true,
-             upsert : true}
+            upsert : true}
         );
 
         res.json(user);

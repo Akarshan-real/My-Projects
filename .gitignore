@@ -1,5 +1,6 @@
 desktop.ini
 node_modules/
+.gitignote
 .env
 dist/
 build/
