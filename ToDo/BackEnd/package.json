@@ -2,11 +2,11 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "script.js",
+  "main": "script.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon script.js",
-    "start": "node script.js"
+    "dev": "tsx watch script.ts",
+    "start": "tsx script.ts"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +17,12 @@
     "dotenv": "^17.2.3",
     "ejs": "^3.1.10",
     "express": "^4.22.1",
-    "mongoose": "^9.0.0"
+    "mongoose": "^9.0.0",
+    "tsx": "^4.22.4"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "typescript": "^6.0.3"
   }
 }

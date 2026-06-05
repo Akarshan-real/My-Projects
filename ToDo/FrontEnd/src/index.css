@@ -1,22 +1,42 @@
 @import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+@theme {
+  --color-content-bg: #fccee8;
+  --color-content-bg-hover: #febde3;
+  --color-navbar-bg: #314158;
+  --color-navbar-bg-hover: #3c4f69;
+
+  --animate-slide-in: slideIn 1s ease-in-out forwards;
+  --animate-slide-out: slideOut 1s ease-in-out forwards;
+  --animate-popup: popup 2s ease-in-out alternate;
+}
+
+@keyframes slideIn {
+  0% { transform: translateX(-150%); }
+  75% { transform: translateX(15%); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes slideOut {
+  0% { transform: translateX(0); }
+  75% { transform: translateX(15%); }
+  100% { transform: translateX(-150%); }
+}
+
+@keyframes popup {
+  0% { opacity: 1; top: -20%; }
+  25% { opacity: 1; top: 5%; }
+  75% { opacity: 1; top: 5%; }
+  100% { opacity: 0; top: -20%; }
+}
+
 @layer base {
   * {
-    margin: 0;
-    padding: 0;
     font-family: "Montserrat", sans-serif;
   }
 }
 
 .mid {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-:root {
-  --content-bg : #fccee8;
-  --content-bg-hover : #febde3;
-  --navbar-bg : #314158 ;
-  --navbar-bg-hover : #3c4f69 ;
+  @apply flex justify-center items-center;
 }

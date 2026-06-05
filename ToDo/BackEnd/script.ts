@@ -1,9 +1,8 @@
-// script.js
-import express from 'express'
-import mongoose from 'mongoose'
-import cors from 'cors'
-import { config } from 'dotenv'
-import router from './routes/todoRoutes.js';
+import express, { Request, Response, NextFunction } from 'express';
+import mongoose from 'mongoose';
+import cors from 'cors';
+import { config } from 'dotenv';
+import router from './routes/index.js';
 
 config();
 
@@ -12,6 +11,7 @@ const app = express();
 app.use(cors({
   origin: [
     "http://localhost:5173",
+    "http://localhost:5174",
     "https://www.shini.xyz",
     "https://landing-1-git-main-akarshans-projects-37ce71d8.vercel.app",
     "https://landing-1-c9ra2j23n-akarshans-projects-37ce71d8.vercel.app"
@@ -25,11 +25,11 @@ app.use(express.json());
 
 const port = process.env.PORT || 3000;
 
-app.get('/', (req, res) => {
+app.get('/', (req: Request, res: Response) => {
   res.render('index');
 });
 
-const checkApiKeyMiddleware = (req, res, next) => {
+const checkApiKeyMiddleware = (req: Request, res: Response, next: NextFunction) => {
   if (req.method === 'OPTIONS') {
     return next();
   }
@@ -39,8 +39,8 @@ const checkApiKeyMiddleware = (req, res, next) => {
     next();
   }
   else {
-    res.status(403).json({ msg: "Wrong api key sent" });
-    console.log("Wrong api dude");
+    console.warn("Unauthorized API access attempt");
+    return res.status(403).json({ msg: "Wrong api key sent" });
   }
 }
 
@@ -48,6 +48,9 @@ app.use("/api", checkApiKeyMiddleware, router);
 
 (async function startServer() {
   try {
+    if (!process.env.MONGO_URL) {
+      throw new Error("MONGO_URL not defined");
+    }
     await mongoose.connect(process.env.MONGO_URL);
     console.log(`db connected by mongoose with atlas`);
 
@@ -55,7 +58,7 @@ app.use("/api", checkApiKeyMiddleware, router);
       console.log(`port running`, " ", port);
     });
   }
-  catch (error) {
+  catch (error: any) {
     console.log('Database failed to connect', " ", error.message);
     process.exit(1);
   }
