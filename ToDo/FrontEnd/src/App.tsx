@@ -5,11 +5,6 @@ import Navbar from './components/Navbar';
 import Todo from './components/Todo';
 import Label from './components/Label';
 
-const API = {
-  URL: import.meta.env.VITE_API_URL,
-  KEY: import.meta.env.VITE_API_KEY
-};
-
 function App() {
 
   const [logInStatus, setLogInStatus] = useState(!!localStorage.getItem("userName")); // to take username from the user instead of prompt
