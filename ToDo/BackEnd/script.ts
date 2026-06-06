@@ -29,6 +29,26 @@ app.get('/', (req: Request, res: Response) => {
   res.render('index');
 });
 
+app.get('/ping', async (req: Request, res: Response) => {
+  try {
+    if (mongoose.connection.readyState === 1) {
+      await mongoose.connection.db?.admin().ping();
+
+      res.status(200).json({
+        status: 'ok',
+        message: 'pong - db active'
+      });
+    } else {
+      res.status(503).json({
+        status: 'error',
+        message: 'db disconnected'
+      });
+    }
+  } catch (error) {
+    res.status(500).json({ status: 'error', message: 'ping failed' });
+  }
+});
+
 const checkApiKeyMiddleware = (req: Request, res: Response, next: NextFunction) => {
   if (req.method === 'OPTIONS') {
     return next();
