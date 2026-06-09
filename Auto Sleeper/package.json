@@ -9,7 +9,8 @@
     "dev": "concurrently \"npm run vite-dev\" \"npm run electron-dev\"",
     "build": "vite build",
     "start": "npm run build && electron .",
-    "package": "npm run build && electron-builder --win"
+    "package": "npm run build && electron-builder --win",
+    "build:store": "npm run build && electron-builder --win appx"
   },
   "build": {
     "appId": "com.autosleeper.app",
@@ -25,12 +26,30 @@
       "src/data/**/*"
     ],
     "win": {
-      "target": "nsis"
+      "target": "nsis",
+      "icon": "build/icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": "always",
+      "createStartMenuShortcut": true,
+      "license": "LICENSE",
+      "installerIcon": "build/icon.png",
+      "uninstallerIcon": "build/icon.png",
+      "uninstallDisplayName": "Auto Sleeper",
+      "runAfterFinish": true
+    },
+    "appx": {
+      "identityName": "YOUR_IDENTITY_NAME_HERE",
+      "publisher": "CN=YOUR_PUBLISHER_ID_HERE",
+      "publisherDisplayName": "Your Display Name",
+      "applicationId": "AutoSleeper"
     }
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "type": "commonjs",
   "devDependencies": {
     "@vitejs/plugin-react": "^6.0.2",

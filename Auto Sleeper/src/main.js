@@ -14,7 +14,8 @@ function createWindow() {
             contextIsolation: true,
             preload: path.join(__dirname, 'preload.js')
         },
-        autoHideMenuBar: true
+        autoHideMenuBar: true,
+        icon: path.join(__dirname, '../build/icon.png')
     });
 
     if (process.env.NODE_ENV === 'development') {
