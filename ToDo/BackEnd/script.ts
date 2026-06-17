@@ -13,6 +13,7 @@ app.use(cors({
     "http://localhost:5173",
     "http://localhost:5174",
     "https://www.shini.xyz",
+    "landing-1-gold.vercel.app",
     "https://landing-1-git-main-akarshans-projects-37ce71d8.vercel.app",
     "https://landing-1-c9ra2j23n-akarshans-projects-37ce71d8.vercel.app"
   ],
