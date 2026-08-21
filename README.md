@@ -9,3 +9,4 @@
 | Interchange | Chrome extension syncing play/pause across YouTube, YouTube Music, and Spotify. | [GitHub](https://github.com/Akarshan-real/interchange) | — |
 | Auto-Sleeper | Windows desktop utility to automate system power actions and close apps before shutdown. | [GitHub](https://github.com/Akarshan-real/Auto-Sleeper) | — |
 | djs-commander-esm | ESM-powered command/event handler library for Discord.js bots. | [GitHub](https://github.com/Akarshan-real/djs-commander-esm) | — |
+| Weathery | An elegant meteorological dashboard engineered to deliver real-time atmospheric telemetry and precise climatic forecasts. | [GitHub](https://github.com/Akarshan-real/weatherApp) | [Website](https://weather-app-topaz-three-70.vercel.app/) |
